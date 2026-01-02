@@ -47,3 +47,8 @@ Succeeded files: 1 (100.0%)
 Failed files:    0 (0.0%)
 Duration:        8 ms
 ``` 
+
+Since Hurl does not verify the digest authentication method, we do so by entering the URL with the domain in the browser: 
+**discovery.system.sol/digest**.
+We can see how it asks us for the username and password we have configured. Below are some screenshots of the process.
+[DIGEST_TEST](./images/digest_test1.png) | [DIGEST_TEST](./images/digest_test2.png)
