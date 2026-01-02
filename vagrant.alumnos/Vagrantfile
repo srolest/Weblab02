@@ -66,16 +66,21 @@ Vagrant.configure("2") do |config|
       cp -v /vagrant/config/tierra/discovery.sistema.sol.conf /etc/apache2/sites-available
 
       # Copiar los recursos de nuestra web al Document Root
-      # TODO
+      mkdir -p /var/www/discovery.sistema.sol
+      cp -rv /vagrant/config/tierra/discovery.sistema.sol/* /var/www/discovery.sistema.sol/
 
       # Habilitar/deshabilitar sitios virtuales      
-      # TODO
+      a2dissite 000-default.conf
+      a2ensite discovery.sistema.sol.conf
 
       # Habilitar módulos necesarios
-      # TODO
+      a2enmod authz_groupfile
+      a2enmod auth_digest
 
       # Copiar ficheros de configuración de la autenticación
-      # TODO
+      cp -v /vagrant/config/tierra/.htpasswd_basic /etc/apache2/ 
+      cp -v /vagrant/config/tierra/.htgroups /etc/apache2/ 
+      cp -v /vagrant/config/tierra/.htpasswd_digest /etc/apache2/
 
       systemctl restart apache2
       systemctl status apache2
