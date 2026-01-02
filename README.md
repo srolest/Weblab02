@@ -5,13 +5,13 @@ implementing different authentication methods (Basic and Digest) and group acces
 
 ## Infrastructure
 The network uses the address `192.168.56.0/24`:
-**dns.system.sol** (`192.168.56.100`): Master DNS server for the domain `system.sol`.
-**tierra.system.sol** (`192.168.56.101`): Apache web server.
-**discovery.system.sol**: Alias (CNAME) configured for authentication testing.
+**dns.sistema.sol** (`192.168.56.100`): Master DNS server for the domain `sistema.sol`.
+**tierra.sistema.sol** (`192.168.56.101`): Apache web server.
+**discovery.sistema.sol**: Alias (CNAME) configured for authentication testing.
 
 ## Configuration
 ### 1. Web Server (Virtual Host)
-The configuration file `discovery.system.sol.conf` has been created with the following access control:
+The configuration file `discovery.sistema.sol.conf` has been created with the following access control:
 **Directory `/basic`**: Basic authentication enabled for all valid users.
 **Directory `/basic/development`**: Access restricted to the `development` group (user: `ana`).
 **Directory `/basic/sales`**: Access restricted to the `sales` group (user: `arturo`).
@@ -33,7 +33,7 @@ To validate the configuration, the **HURL** tool was used with the `weblab-2.hur
 
 ### Running the tests:
 ```bash
-hurl --test --variable site=discovery.system.sol weblab-2.hurl
+hurl --test --variable site=discovery.sistema.sol weblab-2.hurl
 ``` 
 
 ### Test results:
@@ -49,6 +49,6 @@ Duration:        8 ms
 ``` 
 
 Since Hurl does not verify the digest authentication method, we do so by entering the URL with the domain in the browser: 
-**discovery.system.sol/digest**.
+**discovery.sistema.sol/digest**.
 We can see how it asks us for the username and password we have configured. Below are some screenshots of the process.
 [DIGEST_TEST](./images/digest_test1.png) | [DIGEST_TEST](./images/digest_test2.png)
