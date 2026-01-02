@@ -6,8 +6,8 @@ implementing different authentication methods (Basic and Digest) and group acces
 ## Infrastructure
 The network uses the address `192.168.56.0/24`:
 **dns.system.sol** (`192.168.56.100`): Master DNS server for the domain `system.sol`.
-**tierra.sistema.sol** (`192.168.56.101`): Apache web server.
-**discovery.sistema.sol**: Alias (CNAME) configured for authentication testing.
+**tierra.system.sol** (`192.168.56.101`): Apache web server.
+**discovery.system.sol**: Alias (CNAME) configured for authentication testing.
 
 ## Configuration
 ### 1. Web Server (Virtual Host)
@@ -16,12 +16,18 @@ The configuration file `discovery.system.sol.conf` has been created with the fol
 **Directory `/basic/development`**: Access restricted to the `development` group (user: `ana`).
 **Directory `/basic/sales`**: Access restricted to the `sales` group (user: `arturo`).
 **Directory `/digest`**: Digest authentication for the user `commander` in the `astronauts` realm.
+
+Below is a screenshot of the configuration file:
+[CONFIGURATION_FILE](./images/configurationfile.png)
+
 ### 2. User Management and Security
 The credential files are located in the `/etc/apache2/` path on the `tierra` server:
 `.htpasswd_basic`: Contains the hashes for Ana, Maria, and Arturo.
 `.htgroups`: Defines the sales and development groups.
 `.htpasswd_digest`: Stores the digest credential for the commander user.
 
+I have also configured the vagrantfile to do everything automatically by taking the files from .vagrant.
+[VAGRANTFILE](./images/vagrantfile.png)
 ## Verification
 To validate the configuration, the **HURL** tool was used with the `weblab-2.hurl` file.
 
